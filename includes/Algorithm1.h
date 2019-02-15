@@ -6,18 +6,19 @@ template <typename T> class Algorithm1: public PermutationGenerator<char>{
 public:
     void generatePermutation(){
         // call recursive permutation generator
+        std::cout << "size : " << size << "\n";
         permutationUtil(0);
     }
 protected:
-    void permutationUtil(size_t index){
-        if(index==size-1){
+    void permutationUtil(int index){
+        if(index == size){
             process();
             return;
         }
         for(int i=index; i<size; i++){
-            swap(elements[index], elements[i]);
+            swap(elements[i], elements[index]);
             permutationUtil(index+1);
-            swap(elements[index], elements[i]);
+            swap(elements[i], elements[index]);
         }
     }
 };
